@@ -1,0 +1,9 @@
+.container {
+  flex: 1;
+  background-color: #e2e3e4;
+}
+
+.viewContainer {
+  flex: 1;
+  padding: 20px 30px;
+}

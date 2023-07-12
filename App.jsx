@@ -1,13 +1,8 @@
 import React from 'react';
-import {Text, View} from 'react-native';
-import styles from './App.module.css';
+import HomeScreen from './src/screens/HomeScreen';
 
 function App() {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Hello world!</Text>
-    </View>
-  );
+  return <HomeScreen />;
 }
 
 export default App;
