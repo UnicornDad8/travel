@@ -3,6 +3,7 @@ import {View, SafeAreaView} from 'react-native';
 import Header from '../../components/Header';
 import Title from '../../components/Title';
 import Categories from '../../components/Categories';
+import AttractionCard from '../../components/AttractionCard';
 import styles from './HomeScreen.module.css';
 
 categories = [
@@ -45,6 +46,18 @@ const HomeScreen = () => {
           onCategoryPress={setSelectedCategory}
           categories={categories}
         />
+        <View style={styles.row}>
+          <AttractionCard
+            title="Nature Landing"
+            subtitle="dummy text"
+            imageSrc="https://github.com/Ceci007/image-repository/blob/master/course-3.jpg?raw=true"
+          />
+          <AttractionCard
+            title="Nature Landing"
+            subtitle="dummy text"
+            imageSrc="https://github.com/Ceci007/image-repository/blob/master/course-3.jpg?raw=true"
+          />
+        </View>
       </View>
     </SafeAreaView>
   );
