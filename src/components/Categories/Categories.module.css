@@ -1,0 +1,19 @@
+.item {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 12px;
+}
+
+.selectedItem {
+  color: #000;
+  font-weight: 700;
+}
+
+.itemContainer {
+  padding: 5px 0;
+  margin-right: 17px;
+}
+
+.selectedItemContainer {
+  border-color: #323cc4;
+  border-bottom-width: 2px;
+}
