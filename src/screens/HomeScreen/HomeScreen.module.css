@@ -5,14 +5,13 @@
 
 .viewContainer {
   flex: 1;
-  padding: 32px;
 }
 
 .categoryTitle {
   color: #000;
   font-size: 20px;
   font-weight: 700;
-  margin-top: 40px;
+  margin: 0 32px;
   margin-bottom: 18px;
 }
 

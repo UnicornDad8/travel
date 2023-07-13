@@ -7,9 +7,8 @@ const Categories = ({categories, selectedCategory, onCategoryPress}) => {
     <View>
       <FlatList
         horizontal
-        style={styles.flatList}
         data={categories}
-        renderItem={({item}) => {
+        renderItem={({item, index}) => {
           const selected = selectedCategory === item;
 
           return (
@@ -18,6 +17,7 @@ const Categories = ({categories, selectedCategory, onCategoryPress}) => {
               style={[
                 styles.itemContainer,
                 selected ? styles.selectedItemContainer : {},
+                index === 0 ? {marginLeft: 32} : {},
               ]}>
               <Text style={[styles.item, selected ? styles.selectedItem : {}]}>
                 {item.name}

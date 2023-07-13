@@ -6,7 +6,7 @@ import styles from './Header.module.css';
 
 const Header = () => {
   return (
-    <View>
+    <View style={styles.headerContainer}>
       <Title text="Where do" />
       <GradientText style={styles.textGradient}>you want to go?</GradientText>
     </View>

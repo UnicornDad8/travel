@@ -9,18 +9,22 @@ const style = {
   height: 120,
 };
 
-const AttractionCard = ({imageSrc, title, subtitle}) => {
+const AttractionCard = ({imageSrc, title, subtitle, styleProp}) => {
   return (
-    <View style={styles.card}>
+    <View style={[styles.card, styleProp]}>
       <Image style={[styles.image, style]} source={{uri: imageSrc}} />
       <View style={styles.cardBody}>
-        <Text style={styles.title}>{title}</Text>
+        <View style={styles.rowWrap}>
+          <Text style={styles.title}>{title}</Text>
+        </View>
         <View style={styles.row}>
           <Image
             style={styles.icon}
             source={require('../../assets/location.png')}
           />
-          <Text style={styles.subtitle}>{subtitle}</Text>
+          <View style={styles.rowWrap}>
+            <Text style={styles.subtitle}>{subtitle}</Text>
+          </View>
         </View>
       </View>
     </View>
