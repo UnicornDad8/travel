@@ -1,18 +1,20 @@
 import {memo} from 'react';
-import {Text, View, FlatList} from 'react-native';
+import {Text, View, FlatList, TouchableOpacity} from 'react-native';
 import styles from './Categories.module.css';
 
-const Categories = ({categories, selectedCategory}) => {
+const Categories = ({categories, selectedCategory, onCategoryPress}) => {
   return (
     <View>
       <FlatList
         horizontal
+        style={styles.flatList}
         data={categories}
         renderItem={({item}) => {
           const selected = selectedCategory === item;
 
           return (
-            <View
+            <TouchableOpacity
+              onPress={() => onCategoryPress(item)}
               style={[
                 styles.itemContainer,
                 selected ? styles.selectedItemContainer : {},
@@ -20,7 +22,7 @@ const Categories = ({categories, selectedCategory}) => {
               <Text style={[styles.item, selected ? styles.selectedItem : {}]}>
                 {item.name}
               </Text>
-            </View>
+            </TouchableOpacity>
           );
         }}
         keyExtractor={item => item.id}

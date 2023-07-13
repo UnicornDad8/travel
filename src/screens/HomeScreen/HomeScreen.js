@@ -1,4 +1,4 @@
-import React from 'react';
+import {useState} from 'react';
 import {View, SafeAreaView} from 'react-native';
 import Header from '../../components/Header';
 import Title from '../../components/Title';
@@ -33,12 +33,18 @@ categories = [
 ];
 
 const HomeScreen = () => {
+  const [selectedCategory, setSelectedCategory] = useState(categories[0]);
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.viewContainer}>
         <Header />
         <Title text="Explore Attractions" style={styles.categoryTitle} />
-        <Categories selectedCategory={categories[0]} categories={categories} />
+        <Categories
+          selectedCategory={selectedCategory}
+          onCategoryPress={setSelectedCategory}
+          categories={categories}
+        />
       </View>
     </SafeAreaView>
   );
