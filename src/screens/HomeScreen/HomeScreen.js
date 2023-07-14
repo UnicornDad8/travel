@@ -1,46 +1,33 @@
 import {useEffect, useState} from 'react';
-import {View, FlatList, SafeAreaView} from 'react-native';
+import {View, Text, FlatList, SafeAreaView} from 'react-native';
 import Header from '../../components/Header';
 import Title from '../../components/Title';
 import Categories from '../../components/Categories';
 import AttractionCard from '../../components/AttractionCard';
 import jsonData from '../../data/attractions.json';
+import categories from '../../data/categories.json';
 import styles from './HomeScreen.module.css';
 
-categories = [
-  {
-    id: 'asdasfdfnh-1',
-    name: 'All',
-  },
-  {
-    id: 'qwyierbasa-2',
-    name: 'Popular',
-  },
-  {
-    id: 'Ljlkqweass-3',
-    name: 'Historical',
-  },
-  {
-    id: 'asjghfaksj-4',
-    name: 'Recomended',
-  },
-  {
-    id: 'asdasdlkfj-5',
-    name: 'Most Viewed',
-  },
-  {
-    id: 'ipyuqqqwdaa-6',
-    name: 'Most Visited',
-  },
-];
+const ALL = 'All';
 
 const HomeScreen = () => {
-  const [selectedCategory, setSelectedCategory] = useState(categories[0]);
+  const [selectedCategory, setSelectedCategory] = useState(ALL);
   const [data, setData] = useState([]);
 
   useEffect(() => {
     setData(jsonData);
   }, []);
+
+  useEffect(() => {
+    if (selectedCategory === ALL) {
+      setData(jsonData);
+    } else {
+      const filteredData = jsonData?.filter(item =>
+        item?.categories?.includes(selectedCategory),
+      );
+      setData(filteredData);
+    }
+  }, [selectedCategory]);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -48,6 +35,9 @@ const HomeScreen = () => {
         <FlatList
           data={data}
           numColumns={2}
+          ListEmptyComponent={
+            <Text style={styles.emptyText}>No items found</Text>
+          }
           ListHeaderComponent={
             <View>
               <Header />
@@ -55,7 +45,7 @@ const HomeScreen = () => {
               <Categories
                 selectedCategory={selectedCategory}
                 onCategoryPress={setSelectedCategory}
-                categories={categories}
+                categories={[ALL, ...categories]}
               />
             </View>
           }

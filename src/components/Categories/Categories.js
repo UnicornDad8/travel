@@ -20,12 +20,12 @@ const Categories = ({categories, selectedCategory, onCategoryPress}) => {
                 index === 0 ? {marginLeft: 32} : {},
               ]}>
               <Text style={[styles.item, selected ? styles.selectedItem : {}]}>
-                {item.name}
+                {item}
               </Text>
             </TouchableOpacity>
           );
         }}
-        keyExtractor={item => item.id}
+        keyExtractor={item => item}
         showsHorizontalScrollIndicator={false}
       />
     </View>
