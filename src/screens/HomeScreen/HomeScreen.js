@@ -35,6 +35,7 @@ const HomeScreen = () => {
         <FlatList
           data={data}
           numColumns={2}
+          showsVerticalScrollIndicator={false}
           ListEmptyComponent={
             <Text style={styles.emptyText}>No items found</Text>
           }

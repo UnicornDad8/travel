@@ -1,5 +1,6 @@
 import {memo} from 'react';
 import {Text, View, Image, Dimensions} from 'react-native';
+import {MapPinIcon} from 'react-native-heroicons/outline';
 import styles from './AttractionCard.module.css';
 
 const {width} = Dimensions.get('window');
@@ -18,10 +19,7 @@ const AttractionCard = ({imageSrc, title, subtitle, styleProp}) => {
           <Text style={styles.title}>{title}</Text>
         </View>
         <View style={styles.row}>
-          <Image
-            style={styles.icon}
-            source={require('../../assets/location.png')}
-          />
+          <MapPinIcon size={22} color="#fff" />
           <View style={styles.rowWrap}>
             <Text style={styles.subtitle}>{subtitle}</Text>
           </View>
