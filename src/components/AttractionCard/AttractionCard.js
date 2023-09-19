@@ -6,7 +6,7 @@ import styles from './AttractionCard.module.css';
 const {width} = Dimensions.get('window');
 
 const style = {
-  width: (width - 56) / 2,
+  width: (width - 50) / 2,
   height: 120,
 };
 
