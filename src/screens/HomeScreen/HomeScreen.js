@@ -58,8 +58,8 @@ const HomeScreen = () => {
               key={item.id}
               styleProp={
                 index % 2 === 0
-                  ? {marginRight: 12, marginLeft: 32}
-                  : {marginRight: 32}
+                  ? {marginRight: 10, marginLeft: 20}
+                  : {marginRight: 20}
               }
               title={item.name}
               subtitle={item.city}

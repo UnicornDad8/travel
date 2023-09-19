@@ -8,6 +8,7 @@ import {
   Dimensions,
   Pressable,
 } from 'react-native';
+import InfoCard from '../../components/InfoCard';
 import styles from './AttractionScreen.module.css';
 
 const {height} = Dimensions.get('window');
@@ -65,8 +66,23 @@ const AttractionScreen = ({navigation, route}) => {
             ))}
           </Pressable>
         </ImageBackground>
-
-        <Text>{item?.name}</Text>
+        <View style={styles.middleHeaderContainer}>
+          <View style={styles.middTitleContainer}>
+            <Text style={styles.title}>{item?.name}</Text>
+            <Text style={styles.price}>{item?.entry_price}</Text>
+          </View>
+          <Text style={styles.city}>{item?.city}</Text>
+          <InfoCard icon={require('../../assets/location_circle.png')}>
+            <Text style={styles.iconText}>{item?.address}</Text>
+          </InfoCard>
+          <InfoCard icon={require('../../assets/schedule.png')}>
+            <Text style={styles.iconText}>OPEN</Text>
+            <Text
+              style={
+                styles.iconText
+              }>{`${item?.opening_time} - ${item?.closing_time}`}</Text>
+          </InfoCard>
+        </View>
       </View>
     </SafeAreaView>
   );
