@@ -64,7 +64,7 @@ const HomeScreen = () => {
               title={item.name}
               subtitle={item.city}
               imageSrc={item.images?.length ? item.images[0] : null}
-              onPress={() => navigation.navigate('AttractionDetails')}
+              onPress={() => navigation.navigate('AttractionDetails', {item})}
             />
           )}
         />

@@ -1,12 +1,13 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {SafeAreaView, Text} from 'react-native';
 import './AttractionScreen.module.css';
 
-const AttractionScreen = () => {
+const AttractionScreen = ({route}) => {
+  const {item} = route?.params || {};
   return (
-    <View>
-      <Text>Attraction Screen</Text>
-    </View>
+    <SafeAreaView>
+      <Text>{item?.name}</Text>
+    </SafeAreaView>
   );
 };
 
