@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react';
 import {View, Text, FlatList, SafeAreaView} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 import Header from '../../components/Header';
 import Title from '../../components/Title';
 import Categories from '../../components/Categories';
@@ -11,6 +12,7 @@ import styles from './HomeScreen.module.css';
 const ALL = 'All';
 
 const HomeScreen = () => {
+  const navigation = useNavigation();
   const [selectedCategory, setSelectedCategory] = useState(ALL);
   const [data, setData] = useState([]);
 
@@ -62,6 +64,7 @@ const HomeScreen = () => {
               title={item.name}
               subtitle={item.city}
               imageSrc={item.images?.length ? item.images[0] : null}
+              onPress={() => navigation.navigate('AttractionDetails')}
             />
           )}
         />

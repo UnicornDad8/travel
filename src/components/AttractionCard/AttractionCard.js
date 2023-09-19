@@ -1,5 +1,5 @@
 import {memo} from 'react';
-import {Text, View, Image, Dimensions} from 'react-native';
+import {Text, View, TouchableOpacity, Image, Dimensions} from 'react-native';
 import {MapPinIcon} from 'react-native-heroicons/outline';
 import styles from './AttractionCard.module.css';
 
@@ -10,9 +10,9 @@ const style = {
   height: 120,
 };
 
-const AttractionCard = ({imageSrc, title, subtitle, styleProp}) => {
+const AttractionCard = ({imageSrc, title, subtitle, onPress, styleProp}) => {
   return (
-    <View style={[styles.card, styleProp]}>
+    <TouchableOpacity onPress={onPress} style={[styles.card, styleProp]}>
       <Image style={[styles.image, style]} source={{uri: imageSrc}} />
       <View style={styles.cardBody}>
         <View style={styles.rowWrap}>
@@ -25,7 +25,7 @@ const AttractionCard = ({imageSrc, title, subtitle, styleProp}) => {
           </View>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
