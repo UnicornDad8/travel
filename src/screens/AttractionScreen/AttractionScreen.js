@@ -3,11 +3,13 @@ import {
   SafeAreaView,
   View,
   ImageBackground,
+  ScrollView,
   Text,
   Image,
   Dimensions,
   Pressable,
 } from 'react-native';
+import MapView from 'react-native-maps';
 import InfoCard from '../../components/InfoCard';
 import styles from './AttractionScreen.module.css';
 
@@ -29,7 +31,7 @@ const AttractionScreen = ({navigation, route}) => {
 
   return (
     <SafeAreaView>
-      <View style={styles.container}>
+      <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
         <ImageBackground
           style={{
             width: '100%',
@@ -82,8 +84,22 @@ const AttractionScreen = ({navigation, route}) => {
                 styles.iconText
               }>{`${item?.opening_time} - ${item?.closing_time}`}</Text>
           </InfoCard>
+          <MapView
+            style={{
+              width: '100%',
+              height: 200,
+              borderRadius: 10,
+              paddingBottom: 20,
+            }}
+            initialRegion={{
+              latitude: 37.78825,
+              longitude: -122.4324,
+              latitudeDelta: 0.0922,
+              longitudeDelta: 0.0421,
+            }}
+          />
         </View>
-      </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };

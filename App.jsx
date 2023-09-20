@@ -1,4 +1,5 @@
 import React from 'react';
+import {enableLatestRenderer} from 'react-native-maps';
 import {NavigationContainer, DefaultTheme} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import HomeScreen from './src/screens/HomeScreen';
@@ -6,6 +7,7 @@ import AttractionScreen from './src/screens/AttractionScreen';
 import GalleryScreen from './src/screens/GalleryScreen';
 
 const Stack = createNativeStackNavigator();
+enableLatestRenderer();
 
 const AppTheme = {
   ...DefaultTheme,
