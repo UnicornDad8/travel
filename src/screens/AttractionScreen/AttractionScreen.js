@@ -9,7 +9,7 @@ import {
   Dimensions,
   Pressable,
 } from 'react-native';
-import MapView from 'react-native-maps';
+import MapView, {Marker} from 'react-native-maps';
 import InfoCard from '../../components/InfoCard';
 import styles from './AttractionScreen.module.css';
 
@@ -20,6 +20,13 @@ const AttractionScreen = ({navigation, route}) => {
   const mainImage = item?.images.length ? item?.images[0] : null;
   const slicedImages = item?.images?.length ? item?.images?.slice(0, 4) : [];
   const diffImages = item?.images?.length - slicedImages?.length;
+
+  const coords = {
+    latitude: item?.coordinates?.lat,
+    longitude: item?.coordinates?.lon,
+    longitudeDelta: 0.005,
+    latitudeDelta: 0.005,
+  };
 
   const onBack = () => {
     navigation.goBack();
@@ -84,20 +91,9 @@ const AttractionScreen = ({navigation, route}) => {
                 styles.iconText
               }>{`${item?.opening_time} - ${item?.closing_time}`}</Text>
           </InfoCard>
-          <MapView
-            style={{
-              width: '100%',
-              height: 200,
-              borderRadius: 10,
-              paddingBottom: 20,
-            }}
-            initialRegion={{
-              latitude: 37.78825,
-              longitude: -122.4324,
-              latitudeDelta: 0.0922,
-              longitudeDelta: 0.0421,
-            }}
-          />
+          <MapView style={styles.map} initialRegion={coords}>
+            <Marker coordinate={coords} title={item?.name} />
+          </MapView>
         </View>
       </ScrollView>
     </SafeAreaView>
