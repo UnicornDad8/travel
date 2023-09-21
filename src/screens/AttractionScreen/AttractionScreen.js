@@ -10,6 +10,7 @@ import {
   Pressable,
 } from 'react-native';
 import MapView, {Marker} from 'react-native-maps';
+import Share from 'react-native-share';
 import InfoCard from '../../components/InfoCard';
 import styles from './AttractionScreen.module.css';
 
@@ -36,6 +37,19 @@ const AttractionScreen = ({navigation, route}) => {
     navigation.navigate('Gallery', {images: item?.images});
   };
 
+  const onShare = () => {
+    Share.open({
+      title: item?.name,
+      message: 'Hey, I wanted to share with you this amazing attraction',
+    })
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        err && console.log(err);
+      });
+  };
+
   return (
     <SafeAreaView>
       <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
@@ -55,7 +69,7 @@ const AttractionScreen = ({navigation, route}) => {
                 source={require('../../assets/back.png')}
               />
             </Pressable>
-            <Pressable hitSlop={8}>
+            <Pressable hitSlop={8} onPress={onShare}>
               <Image
                 style={styles.icon}
                 source={require('../../assets/share.png')}
