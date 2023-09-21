@@ -94,6 +94,11 @@ const AttractionScreen = ({navigation, route}) => {
           <MapView style={styles.map} initialRegion={coords}>
             <Marker coordinate={coords} title={item?.name} />
           </MapView>
+          <Text
+            style={styles.mapText}
+            onPress={() => navigation.navigate('Map', {item})}>
+            Show full screen map
+          </Text>
         </View>
       </ScrollView>
     </SafeAreaView>
