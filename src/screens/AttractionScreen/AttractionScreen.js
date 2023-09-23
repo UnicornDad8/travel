@@ -10,6 +10,7 @@ import {
   Pressable,
 } from 'react-native';
 import MapView, {Marker} from 'react-native-maps';
+import ImgToBase64 from 'react-native-image-base64';
 import Share from 'react-native-share';
 import InfoCard from '../../components/InfoCard';
 import styles from './AttractionScreen.module.css';
@@ -37,17 +38,25 @@ const AttractionScreen = ({navigation, route}) => {
     navigation.navigate('Gallery', {images: item?.images});
   };
 
-  const onShare = () => {
-    Share.open({
-      title: item?.name,
-      message: 'Hey, I wanted to share with you this amazing attraction',
-    })
-      .then(res => {
-        console.log(res);
+  const onShare = async () => {
+    try {
+      const base64Image = await ImgToBase64.getBase64String(mainImage);
+      console.log('base64Imgae', base64Image);
+
+      Share.open({
+        title: item?.name,
+        message: 'Hey, I wanted to share with you this amazing attraction',
+        url: `data:image/jpg;base64,${base64Image}`,
       })
-      .catch(err => {
-        err && console.log(err);
-      });
+        .then(res => {
+          console.log(res);
+        })
+        .catch(err => {
+          err && console.log(err);
+        });
+    } catch (err) {
+      console.log('sharing error', err);
+    }
   };
 
   return (
