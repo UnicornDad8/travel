@@ -40,13 +40,15 @@ const AttractionScreen = ({navigation, route}) => {
 
   const onShare = async () => {
     try {
+      const imageWithoutParams = mainImage?.split('?')[0];
+      const imageParis = imageWithoutParams?.split('.');
+      const imageExtension = imageParis[imageParis.length - 1];
       const base64Image = await ImgToBase64.getBase64String(mainImage);
-      console.log('base64Imgae', base64Image);
 
       Share.open({
         title: item?.name,
         message: 'Hey, I wanted to share with you this amazing attraction',
-        url: `data:image/jpg;base64,${base64Image}`,
+        url: `data:image/${imageExtension || 'jpg'};base64,${base64Image}`,
       })
         .then(res => {
           console.log(res);
